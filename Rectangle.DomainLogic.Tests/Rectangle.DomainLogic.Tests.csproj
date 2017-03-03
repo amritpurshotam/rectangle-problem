@@ -41,6 +41,16 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rectangle.DomainLogic\Rectangle.DomainLogic.csproj">
+      <Project>{56ab1f77-9a1d-4371-b073-2b33d510ee72}</Project>
+      <Name>Rectangle.DomainLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rectangle.Domain\Rectangle.Domain.csproj">
+      <Project>{772fc6a6-dc4f-44b2-8bc3-176ed3aab5b8}</Project>
+      <Name>Rectangle.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
