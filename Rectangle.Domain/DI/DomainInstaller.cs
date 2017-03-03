@@ -2,7 +2,7 @@
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Domain.DI
+namespace Rectangle.Domain.DI
 {
     public class DomainInstaller : IWindsorInstaller
     {

@@ -1,7 +1,7 @@
 ﻿using Castle.Windsor;
 using Castle.Windsor.Installer;
 
-namespace Domain.DI
+namespace Rectangle.Domain.DI
 {
     public class DomainBootstrapper
     {
