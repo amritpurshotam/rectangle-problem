@@ -1,4 +1,6 @@
-﻿<div class="starter-template">
+﻿@using RectangleProblem.Controllers
+<div class="starter-template">
     <h1>Rectangle Problem</h1>
     <p class="lead">Solution to the rectangle problem.</p>
+    <a class="btn btn-primary" href="@Url.Action(RectangleController.GenerateActionName, RectangleController.RectangleControllerName)">Start</a>
 </div>

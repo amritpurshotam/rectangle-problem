@@ -129,6 +129,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RectangleController.cs" />
     <Compile Include="DI\WebBootstrapper.cs" />
     <Compile Include="DI\WebInstaller.cs" />
     <Compile Include="DI\WindsorControllerFactory.cs" />
@@ -145,6 +146,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Rectangle\Generate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
