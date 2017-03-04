@@ -8,7 +8,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">Generate Rectangles</div>
     <div class="panel-body">
-        @using (Html.BeginForm(RectangleController.DownloadActionName, RectangleController.RectangleControllerName, FormMethod.Post))
+        @using (Html.BeginForm(RectangleController.GenerateActionName, RectangleController.RectangleControllerName, FormMethod.Post))
         {
             @Html.AntiForgeryToken()
 
@@ -24,11 +24,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button type="submit" class="btn btn-primary">
-                            Download
+                            Generate
                             <i class="glyphicon glyphicon-download"></i>
                         </button>
-
-
                     </div>
                 </div>
             </div>

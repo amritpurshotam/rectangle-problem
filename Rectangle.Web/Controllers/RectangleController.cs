@@ -1,7 +1,5 @@
 ﻿using System.Text;
 using System.Web.Mvc;
-using LIGate.Domain.Errors;
-using Rectangle.Domain.Errors;
 using Rectangle.Domain.Exceptions;
 using Rectangle.DomainLogic.Services.Interfaces;
 using RectangleProblem.Extensions;
@@ -27,14 +25,13 @@ namespace RectangleProblem.Controllers
             return View(model);
         }
 
-        public const string DownloadActionName = "Download";
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Download(GenerateRectangleInput model)
+        public ActionResult Generate(GenerateRectangleInput model)
         {
             if (!ModelState.IsValid)
             {
-                return View(GenerateActionName, model);
+                return View(model);
             }
 
             try
@@ -45,8 +42,8 @@ namespace RectangleProblem.Controllers
             catch (LogicException ex)
             {
                 ModelState.AddLogicErrors(ex);
-                return View(GenerateActionName, model);
+                return View(model);
             }
         }
-	}
+    }
 }
