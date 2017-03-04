@@ -1,3 +1,49 @@
-﻿<div class="container">
-    <h2>Generate Rectangles</h2>
+﻿@using RectangleProblem.Controllers
+
+@model RectangleProblem.Models.Rectangle.GenerateRectangleInput
+
+<div class="panel panel-default">
+    <div class="panel-heading">Generate Rectangles</div>
+    <div class="panel-body">
+        @using (Html.BeginForm(RectangleController.DownloadActionName, RectangleController.RectangleControllerName, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NumberOfRectangles, new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.NumberOfRectangles, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.NumberOfRectangles)
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary">
+                            Download
+                            <i class="glyphicon glyphicon-download"></i>
+                        </button>
+
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <a class="btn btn-danger pull-left" href="@Url.Action(HomeController.IndexActionName, HomeController.HomeControllerName)">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            &nbsp;Back
+        </a>
+
+        <a class="btn btn-success pull-right" href="">
+            Next
+            <i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+    </div>
 </div>

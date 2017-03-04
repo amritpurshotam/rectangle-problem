@@ -22,12 +22,13 @@ namespace RectangleProblem.Controllers
             return View();
         }
 
+        public const string DownloadActionName = "Download";
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Download(GenerateRectangleInput model)
         {
             var grid = gridService.InitialiseWithRectanglesOfRandomSize(model.NumberOfRectangles);
-            return File(Encoding.UTF8.GetBytes(grid.ToStringUsingDimensionsOfRectangles()), "text/plain");
+            return File(Encoding.UTF8.GetBytes(grid.ToStringUsingDimensionsOfRectangles()), "text/plain", "rectangle-dimensions.txt");
         }
 	}
 }
