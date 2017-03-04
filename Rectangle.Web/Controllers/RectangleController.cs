@@ -45,5 +45,13 @@ namespace RectangleProblem.Controllers
                 return View(model);
             }
         }
+
+        public const string SolverActionName = "Solver";
+        [HttpGet]
+        public ActionResult Solver()
+        {
+            var model = new SolverInput();
+            return View(model);
+        }
     }
 }
