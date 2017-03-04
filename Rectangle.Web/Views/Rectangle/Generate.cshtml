@@ -1,6 +1,9 @@
 ﻿@using RectangleProblem.Controllers
+@using RectangleProblem.Extensions
 
 @model RectangleProblem.Models.Rectangle.GenerateRectangleInput
+
+@Html.ValidationSummaryImproved(true)
 
 <div class="panel panel-default">
     <div class="panel-heading">Generate Rectangles</div>

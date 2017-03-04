@@ -133,6 +133,8 @@
     <Compile Include="DI\WebBootstrapper.cs" />
     <Compile Include="DI\WebInstaller.cs" />
     <Compile Include="DI\WindsorControllerFactory.cs" />
+    <Compile Include="Extensions\HtmlExtensions.cs" />
+    <Compile Include="Extensions\ModelStateDictionaryExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

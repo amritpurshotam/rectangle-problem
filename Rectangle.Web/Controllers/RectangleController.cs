@@ -1,6 +1,10 @@
 ﻿using System.Text;
 using System.Web.Mvc;
+using LIGate.Domain.Errors;
+using Rectangle.Domain.Errors;
+using Rectangle.Domain.Exceptions;
 using Rectangle.DomainLogic.Services.Interfaces;
+using RectangleProblem.Extensions;
 using RectangleProblem.Models.Rectangle;
 
 namespace RectangleProblem.Controllers
@@ -28,8 +32,21 @@ namespace RectangleProblem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Download(GenerateRectangleInput model)
         {
-            var grid = gridService.InitialiseWithRectanglesOfRandomSize(model.NumberOfRectangles);
-            return File(Encoding.UTF8.GetBytes(grid.ToStringUsingDimensionsOfRectangles()), "text/plain", "rectangle-dimensions.txt");
+            if (!ModelState.IsValid)
+            {
+                return View(GenerateActionName, model);
+            }
+
+            try
+            {
+                var grid = gridService.InitialiseWithRectanglesOfRandomSize(model.NumberOfRectangles);
+                return File(Encoding.UTF8.GetBytes(grid.ToStringUsingDimensionsOfRectangles()), "text/plain", "rectangle-dimensions.txt");
+            }
+            catch (LogicException ex)
+            {
+                ModelState.AddLogicErrors(ex);
+                return View(GenerateActionName, model);
+            }
         }
 	}
 }
