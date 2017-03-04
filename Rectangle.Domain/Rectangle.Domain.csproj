@@ -50,6 +50,9 @@
     <Compile Include="Coordinate.cs" />
     <Compile Include="DI\DomainBootstrapper.cs" />
     <Compile Include="DI\DomainInstaller.cs" />
+    <Compile Include="Errors\LogicError.cs" />
+    <Compile Include="Errors\LogicErrors.cs" />
+    <Compile Include="Exceptions\LogicException.cs" />
     <Compile Include="Grid.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangle.cs" />
