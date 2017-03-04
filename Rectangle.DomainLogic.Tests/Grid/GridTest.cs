@@ -17,7 +17,7 @@ namespace Rectangle.DomainLogic.Tests.Grid
         }
 
         [Test]
-        public void Given_AGrid_When_GettingNextBottomLeftCoordinateAndRectangleListEmpty_Then_UseMinimumOfCoordinatesOfZeroZero()
+        public void Given_AGrid_When_GettingNextBottomLeftCoordinateAndRectangleListEmpty_Then_UseMinimumCoordinatesOfZeroZero()
         {
             var grid = new Domain.Grid();
 
