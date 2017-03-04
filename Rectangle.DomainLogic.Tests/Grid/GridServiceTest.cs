@@ -19,7 +19,7 @@ namespace Rectangle.DomainLogic.Tests.Grid
         public void GivenNumberOfRectanglesToGenerate_WhenInitialisingGrid_ThenGridMustHaveTheSpecifiedNumberOfRectangles()
         {
             const byte numberOfRectanglesToGenerate = 5;
-            var grid = this.gridService.InitialiseGrid(numberOfRectanglesToGenerate);
+            var grid = this.gridService.InitialiseWithRectanglesOfRandomSize(numberOfRectanglesToGenerate);
             Assert.AreEqual(5, grid.RectangleList.Count);
         }
     }

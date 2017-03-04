@@ -10,7 +10,7 @@ namespace Rectangle.DomainLogic.Services.Implementations
         {
         }
 
-        public Grid InitialiseGrid(byte number)
+        public Grid InitialiseWithRectanglesOfRandomSize(byte number)
         {
             const byte minLength = 1;
             const byte maxLength = 10;
