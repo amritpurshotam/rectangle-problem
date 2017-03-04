@@ -1,5 +1,7 @@
 ﻿using System;
+using Rectangle.Common;
 using Rectangle.Domain;
+using Rectangle.Domain.Errors;
 using Rectangle.DomainLogic.Services.Interfaces;
 
 namespace Rectangle.DomainLogic.Services.Implementations
@@ -10,17 +12,25 @@ namespace Rectangle.DomainLogic.Services.Implementations
         {
         }
 
-        public Grid InitialiseWithRectanglesOfRandomSize(byte number)
+        public Grid InitialiseWithRectanglesOfRandomSize(byte numberOfRectangles)
         {
-            const byte minLength = 1;
-            const byte maxLength = 10;
+            if (numberOfRectangles < Constants.MinRectangles)
+            {
+                throw new OutOfRangeError(string.Format("A minimum of {0} rectangles are required.", Constants.MinRectangles)).AsException();
+            }
+
+            if (numberOfRectangles > Constants.MaxRectangles)
+            {
+                throw new OutOfRangeError(string.Format("A maximum of {0} rectangles are required.", Constants.MaxRectangles)).AsException();
+            }
+
             var random = new Random();
 
             var grid = new Grid();
-            for (var i = 0; i < number; i++)
+            for (var i = 0; i < numberOfRectangles; i++)
             {
-                var height = random.Next(minLength, maxLength);
-                var width = random.Next(minLength, maxLength);
+                var height = random.Next(Constants.MinRectangleLength, Constants.MaxRectangleLength);
+                var width = random.Next(Constants.MinRectangleLength, Constants.MaxRectangleLength);
 
                 var bottomLeftCoordinate = grid.GetNextBottomLeftCoordinate();
                 var rectangle = new Domain.Rectangle(bottomLeftCoordinate, height, width);

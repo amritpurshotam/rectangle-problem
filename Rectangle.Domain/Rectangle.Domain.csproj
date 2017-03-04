@@ -52,6 +52,7 @@
     <Compile Include="DI\DomainInstaller.cs" />
     <Compile Include="Errors\LogicError.cs" />
     <Compile Include="Errors\LogicErrors.cs" />
+    <Compile Include="Errors\OutOfRangeError.cs" />
     <Compile Include="Exceptions\LogicException.cs" />
     <Compile Include="Grid.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
