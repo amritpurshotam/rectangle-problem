@@ -1,4 +1,4 @@
-﻿using Rectangle.Domain;
+﻿using Rectangle.DomainLogic.Tests.Coordinate;
 
 namespace Rectangle.DomainLogic.Tests.Rectangle
 {
@@ -8,7 +8,7 @@ namespace Rectangle.DomainLogic.Tests.Rectangle
         {
             get
             {
-                return new Domain.Rectangle(new Coordinate(0,0), 3, 5);
+                return new Domain.Rectangle(CoordinateStubs.CoordinateStub, 3, 5);
             }
         }
     }
