@@ -19,7 +19,8 @@ namespace RectangleProblem.Controllers
         [HttpGet]
         public ActionResult Generate()
         {
-            return View();
+            var model = new GenerateRectangleInput();
+            return View(model);
         }
 
         public const string DownloadActionName = "Download";
