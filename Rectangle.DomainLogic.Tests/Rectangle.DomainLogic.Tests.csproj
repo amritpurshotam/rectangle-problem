@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Coordinate\CoordinateStubs.cs" />
     <Compile Include="Grid\GridServiceTest.cs" />
+    <Compile Include="Grid\GridStubs.cs" />
     <Compile Include="Grid\GridTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangle\RectangleStubs.cs" />

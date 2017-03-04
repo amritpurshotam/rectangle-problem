@@ -1,4 +1,6 @@
-﻿namespace Rectangle.Domain
+﻿using System.Text;
+
+namespace Rectangle.Domain
 {
     public class Rectangle
     {
@@ -27,6 +29,26 @@
         public Coordinate TopRightCoordinate
         {
             get { return new Coordinate(BottomLeftCoordinate.X + this.Width, BottomLeftCoordinate.Y + this.Height); }
+        }
+
+        public string ToHumanReadableStringWithDimensions()
+        {
+            var builder = new StringBuilder();
+            builder.AppendLine("Rectangle Dimensions");
+            builder.AppendLine("Height:\t" + this.Height);
+            builder.AppendLine("Width:\t" + this.Width);
+            return builder.ToString();
+        }
+
+        public string ToHumanReadableStringWithCoordinates()
+        {
+            var builder = new StringBuilder();
+            builder.AppendLine("Rectangle Coordinates");
+            builder.AppendLine("BottomLeft:\t" + this.BottomLeftCoordinate);
+            builder.AppendLine("TopLeft:\t" + this.TopLeftCoordinate);
+            builder.AppendLine("TopRight:\t" + this.TopRightCoordinate);
+            builder.AppendLine("BottomRight:\t" + this.BottomRightCoordinate);
+            return builder.ToString();
         }
     }
 }

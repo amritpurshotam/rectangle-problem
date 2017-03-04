@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Rectangle.Domain
 {
@@ -7,7 +8,7 @@ namespace Rectangle.Domain
     {
         public Grid()
         {
-            RectangleList = new List<Rectangle>();
+            this.RectangleList = new List<Rectangle>();
         }
 
         public IList<Rectangle> RectangleList { get; private set; }
@@ -25,6 +26,30 @@ namespace Rectangle.Domain
             }
 
             return this.RectangleList.Last().BottomRightCoordinate;
+        }
+
+        public string ToStringUsingDimensionsOfRectangles()
+        {
+            var builder = new StringBuilder();
+            foreach (var rectangle in this.RectangleList)
+            {
+                builder.AppendLine(rectangle.ToHumanReadableStringWithDimensions());
+                builder.AppendLine();
+            }
+
+            return builder.ToString();
+        }
+
+        public string ToStringUsingCoordinatesOfRectangles()
+        {
+            var builder = new StringBuilder();
+            foreach (var rectangle in this.RectangleList)
+            {
+                builder.AppendLine(rectangle.ToHumanReadableStringWithCoordinates());
+                builder.AppendLine();
+            }
+
+            return builder.ToString();
         }
     }
 }
