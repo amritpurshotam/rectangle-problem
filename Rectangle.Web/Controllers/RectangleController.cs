@@ -53,5 +53,24 @@ namespace RectangleProblem.Controllers
             var model = new SolverInput();
             return View(model);
         }
+
+        [HttpPost]
+        public ActionResult Solver(SolverInput model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            try
+            {
+                return View();
+            }
+            catch (LogicException ex)
+            {
+                ModelState.AddLogicErrors(ex);
+                return View(model);
+            }
+        }
     }
 }
