@@ -2,15 +2,15 @@
 {
     public class Rectangle
     {
-        public Rectangle(Coordinate bottomLeftCoordinate, decimal height, decimal width)
+        public Rectangle(Coordinate bottomLeftCoordinate, int height, int width)
         {
             this.BottomLeftCoordinate = bottomLeftCoordinate;
             this.Height = height;
             this.Width = width;
         }
 
-        public decimal Height { get; private set; }
-        public decimal Width { get; private set; }
+        public int Height { get; private set; }
+        public int Width { get; private set; }
 
         public Coordinate BottomLeftCoordinate { get; private set; }
 

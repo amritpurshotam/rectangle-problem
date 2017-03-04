@@ -2,13 +2,13 @@
 {
     public class Coordinate
     {
-        public Coordinate(decimal x, decimal y)
+        public Coordinate(int x, int y)
         {
             this.X = x;
             this.Y = y;
         }
 
-        public decimal X { get; private set; }
-        public decimal Y { get; private set; }
+        public int X { get; private set; }
+        public int Y { get; private set; }
     }
 }
