@@ -1,6 +1,6 @@
 ﻿using Castle.Windsor;
 using Castle.Windsor.Installer;
-using Domain.DI;
+using Rectangle.Domain.DI;
 
 namespace Rectangle.DomainLogic.DI
 {
