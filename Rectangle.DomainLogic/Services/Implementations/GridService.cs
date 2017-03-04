@@ -12,13 +12,15 @@ namespace Rectangle.DomainLogic.Services.Implementations
 
         public Grid InitialiseGrid(byte number)
         {
-            var grid = new Grid();
-
+            const byte minLength = 1;
+            const byte maxLength = 10;
             var random = new Random();
+
+            var grid = new Grid();
             for (var i = 0; i < number; i++)
             {
-                var height = random.Next();
-                var width = random.Next();
+                var height = random.Next(minLength, maxLength);
+                var width = random.Next(minLength, maxLength);
 
                 var bottomLeftCoordinate = grid.GetNextBottomLeftCoordinate();
                 var rectangle = new Domain.Rectangle(bottomLeftCoordinate, height, width);
