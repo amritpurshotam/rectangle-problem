@@ -1,2 +1,43 @@
-﻿@model RectangleProblem.Models.Rectangle.SolverInput
+﻿@using RectangleProblem.Controllers
+@using RectangleProblem.Extensions
+@model RectangleProblem.Models.Rectangle.SolverInput
 
+@Html.ValidationSummaryImproved(true)
+
+<div class="panel panel-default">
+    <div class="panel-heading">Upload Rectangles</div>
+    <div class="panel-body">
+        @using (Html.BeginForm(RectangleController.SolverActionName, RectangleController.RectangleControllerName, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RectanglesFile, new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(model => model.RectanglesFile, new { type = "file" })
+                        @Html.ValidationMessageFor(model => model.RectanglesFile)
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary">
+                            Upload
+                            <i class="glyphicon glyphicon-cloud-upload"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <a class="btn btn-danger pull-left" href="@Url.Action(RectangleController.GenerateActionName, RectangleController.RectangleControllerName)">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            &nbsp;Back
+        </a>
+    </div>
+</div>
