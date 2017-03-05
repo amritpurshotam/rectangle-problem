@@ -1,4 +1,5 @@
-﻿@using RectangleProblem.Controllers
+﻿@using System.Web.Optimization
+@using RectangleProblem.Controllers
 @using RectangleProblem.Extensions
 @model RectangleProblem.Models.Rectangle.SolverInput
 
@@ -35,7 +36,7 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">Uploaded Rectangles</div>
-    <div class="panel-body">
+    <div class="panel-body" onload="draw()">
         <canvas id="uploaded-rectangles" width="750" height="200"></canvas>
     </div>
 </div>
@@ -55,3 +56,8 @@
         </a>
     </div>
 </div>
+
+@section PageScripts
+{
+    <script src="../../Scripts/PageScripts/rectangle.js"></script>
+}

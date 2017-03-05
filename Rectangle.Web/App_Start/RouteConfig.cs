@@ -9,6 +9,8 @@ namespace RectangleProblem
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
+            routes.IgnoreRoute("Content/{*path}");
+            routes.IgnoreRoute("Scripts/{*path}");
 
             routes.MapRoute(
                 name: "Default",
