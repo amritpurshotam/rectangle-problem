@@ -13,7 +13,7 @@ namespace Rectangle.DomainLogic.Services.Implementations
         {
         }
 
-        public Grid InitialiseWithRectanglesOfRandomSize(byte numberOfRectangles)
+        public Grid InitialiseWithRectanglesOfRandomSize(int numberOfRectangles)
         {
             AssertNumberOfRectanglesInRange(numberOfRectangles);
 
