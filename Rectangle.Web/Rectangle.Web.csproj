@@ -141,6 +141,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\PageScripts\rectangle.js" />
+    <Content Include="Scripts\randomColor.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
