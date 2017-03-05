@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
 using System.Web.Mvc;
 using Rectangle.Domain.Exceptions;
 using Rectangle.DomainLogic.Services.Interfaces;
@@ -64,6 +65,11 @@ namespace RectangleProblem.Controllers
 
             try
             {
+                using (var streamReader = new StreamReader(model.RectanglesFile.InputStream))
+                {
+                    var rectanglesString = streamReader.ReadToEnd();
+                    var grid = gridService.InitialiseGridFromString(rectanglesString);
+                }
                 return View();
             }
             catch (LogicException ex)

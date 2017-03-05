@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using Rectangle.Common;
 using Rectangle.Domain;
 using Rectangle.Domain.Errors;
@@ -39,6 +40,30 @@ namespace Rectangle.DomainLogic.Services.Implementations
             }
 
             return grid;
-        } 
+        }
+
+        public Grid InitialiseGridFromString(string rectanglesString)
+        {
+            var grid = new Grid();
+
+            var heightWidthRegex = new Regex(@"Height:\t(\d+)[\n\r]+Width:\t(\d+)", RegexOptions.Compiled);
+            var heightRegex = new Regex(@"Height:\t(\d+)", RegexOptions.Compiled);
+            var widthRegex = new Regex(@"Width:\t(\d+)", RegexOptions.Compiled);
+            var digitRegex = new Regex(@"\d+", RegexOptions.Compiled);
+
+            var matches = heightWidthRegex.Matches(rectanglesString);
+            foreach (Match match in matches)
+            {
+                var heightMatch = heightRegex.Match(match.Value);
+                var widthMatch = widthRegex.Match(match.Value);
+
+                var height = int.Parse(digitRegex.Match(heightMatch.Value).Value);
+                var width = int.Parse(digitRegex.Match(widthMatch.Value).Value);
+
+                grid.AddRectangle(new Domain.Rectangle(grid.GetNextBottomLeftCoordinate(), height, width));
+            }
+
+            return grid;
+        }
     }
 }
