@@ -44,8 +44,8 @@
         var inputGrid = @(Html.Raw(Json.Encode(Model.InputGrid)));
         var solutionGrid = @(Html.Raw(Json.Encode(Model.SolutionGrid)));
         $(document).ready(function() {
-            draw("uploaded-rectangles", inputGrid);
-            draw("solution-rectangles", solutionGrid);
+            draw("uploaded-rectangles", inputGrid, false);
+            draw("solution-rectangles", solutionGrid, true);
         });
     </script>
 }

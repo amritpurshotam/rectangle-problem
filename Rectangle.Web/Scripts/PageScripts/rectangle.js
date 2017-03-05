@@ -1,8 +1,23 @@
-﻿function draw(canvasId, grid) {
+﻿function draw(canvasId, grid, isSolutionGrid) {
     var canvas = document.getElementById(canvasId);
     if (canvas.getContext) {
         var context = canvas.getContext("2d");
         context.translate(0, 200);
+
+        var sumWidth = 0;
+        if (isSolutionGrid) {
+            sumWidth = grid.RectangleList[0].Width;
+        } else {
+            for (var j = 0; j < grid.RectangleList.length; j++) {
+                sumWidth = sumWidth + grid.RectangleList[j].Width;
+            }
+        }
+        
+
+        if (sumWidth > 750) {
+            var scalingFactor = 1 / (sumWidth / 750);
+            context.scale(scalingFactor, 1);
+        }
 
         for (var i = 0; i < grid.RectangleList.length; i++) {
             var bottomLeftCoordinate = grid.RectangleList[i].BottomLeftCoordinate;
