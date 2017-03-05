@@ -69,6 +69,8 @@ namespace RectangleProblem.Controllers
                 {
                     var rectanglesString = streamReader.ReadToEnd();
                     var grid = gridService.InitialiseGridFromString(rectanglesString);
+
+                    return Json(grid, JsonRequestBehavior.AllowGet);
                 }
                 return View();
             }
