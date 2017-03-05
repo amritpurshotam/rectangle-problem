@@ -4,7 +4,7 @@ namespace Rectangle.DomainLogic.Services.Interfaces
 {
     public interface IGridService
     {
-        Grid InitialiseWithRectanglesOfRandomSize(byte number);
+        Grid InitialiseWithRectanglesOfRandomSize(int number);
         Grid InitialiseGridFromString(string rectanglesString);
     }
 }

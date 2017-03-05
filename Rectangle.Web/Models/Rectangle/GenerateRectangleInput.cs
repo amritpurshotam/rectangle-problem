@@ -8,6 +8,6 @@ namespace RectangleProblem.Models.Rectangle
         [Required]
         [Range(Constants.MinRectangles, Constants.MaxRectangles, ErrorMessage = "Number of rectangles must be between 3 and 30 inclusive.")]
         [Display(Name = "Number of rectangles")]
-        public byte NumberOfRectangles { get; set; }
+        public int NumberOfRectangles { get; set; }
     }
 }
