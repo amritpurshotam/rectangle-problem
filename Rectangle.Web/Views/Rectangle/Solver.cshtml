@@ -8,7 +8,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">Upload Rectangles</div>
     <div class="panel-body">
-        @using (Html.BeginForm(RectangleController.SolverActionName, RectangleController.RectangleControllerName, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm(RectangleController.SolverActionName, RectangleController.RectangleControllerName, FormMethod.Post, new { enctype = "multipart/form-data", id = "upload-rectangles-form" }))
         {
             @Html.AntiForgeryToken()
 
