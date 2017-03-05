@@ -47,35 +47,37 @@ namespace RectangleProblem.Controllers
             }
         }
 
-        public const string SolverActionName = "Solver";
+        public const string UploadActionName = "Upload";
         [HttpGet]
-        public ActionResult Solver()
+        public ActionResult Upload()
         {
-            var model = new SolverInput();
+            var model = new UploadInput();
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Solver(SolverInput model)
+        public ActionResult Upload(UploadInput input)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View(input);
             }
 
             try
             {
-                using (var streamReader = new StreamReader(model.RectanglesFile.InputStream))
+                using (var streamReader = new StreamReader(input.RectanglesFile.InputStream))
                 {
                     var rectanglesString = streamReader.ReadToEnd();
                     var grid = gridService.InitialiseGridFromString(rectanglesString);
-                    return Json(grid, JsonRequestBehavior.AllowGet);
+
+                    var model = new SolutionRectanglesDisplay(grid, null);
+                    return View("Solution", model);
                 }
             }
             catch (LogicException ex)
             {
                 ModelState.AddLogicErrors(ex);
-                return View(model);
+                return View(input);
             }
         }
     }

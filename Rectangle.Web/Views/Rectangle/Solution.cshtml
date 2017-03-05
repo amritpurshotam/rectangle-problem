@@ -1,0 +1,42 @@
+﻿@using RectangleProblem.Controllers
+
+@model RectangleProblem.Models.Rectangle.SolutionRectanglesDisplay
+
+<div class="row">
+    <div class="col-md-12">
+        <a class="btn btn-danger pull-left" href="@Url.Action(RectangleController.UploadActionName, RectangleController.RectangleControllerName)">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            &nbsp;Back
+        </a>
+    </div>
+</div>
+
+<br/>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Uploaded Rectangles</div>
+    <div class="panel-body">
+        <canvas id="uploaded-rectangles" width="750" height="200"></canvas>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Solution Rectangles</div>
+    <div class="panel-body">
+        <canvas id="solution-rectangles" width="750" height="200"></canvas>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <a class="btn btn-primary pull-right" href="">
+            Download
+            <i class="glyphicon glyphicon-cloud-download"></i>
+        </a>
+    </div>
+</div>
+
+@section PageScripts
+{
+    <script src="../../Scripts/PageScripts/rectangle.js"></script>
+}

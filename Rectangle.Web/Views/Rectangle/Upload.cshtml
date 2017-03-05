@@ -1,14 +1,13 @@
-﻿@using System.Web.Optimization
-@using RectangleProblem.Controllers
+﻿@using RectangleProblem.Controllers
 @using RectangleProblem.Extensions
-@model RectangleProblem.Models.Rectangle.SolverInput
+@model RectangleProblem.Models.Rectangle.UploadInput
 
 @Html.ValidationSummaryImproved(true)
 
 <div class="panel panel-default">
     <div class="panel-heading">Upload Rectangles</div>
     <div class="panel-body">
-        @using (Html.BeginForm(RectangleController.SolverActionName, RectangleController.RectangleControllerName, FormMethod.Post, new { enctype = "multipart/form-data", id = "upload-rectangles-form" }))
+        @using (Html.BeginForm(RectangleController.UploadActionName, RectangleController.RectangleControllerName, FormMethod.Post, new { enctype = "multipart/form-data", id = "upload-rectangles-form" }))
         {
             @Html.AntiForgeryToken()
 
@@ -34,20 +33,6 @@
     </div>
 </div>
 
-<div class="panel panel-default">
-    <div class="panel-heading">Uploaded Rectangles</div>
-    <div class="panel-body" onload="draw()">
-        <canvas id="uploaded-rectangles" width="750" height="200"></canvas>
-    </div>
-</div>
-
-<div class="panel panel-default">
-    <div class="panel-heading">Solution</div>
-    <div class="panel-body">
-        <canvas id="solution-rectangles" width="750" height="200"></canvas>
-    </div>
-</div>
-
 <div class="row">
     <div class="col-md-12">
         <a class="btn btn-danger pull-left" href="@Url.Action(RectangleController.GenerateActionName, RectangleController.RectangleControllerName)">
@@ -56,8 +41,3 @@
         </a>
     </div>
 </div>
-
-@section PageScripts
-{
-    <script src="../../Scripts/PageScripts/rectangle.js"></script>
-}
