@@ -12,10 +12,10 @@
 <body>
     @Html.Partial("_NavBar")
 
-<div class="container">
-    <br />
-    @RenderBody()
-</div>
+    <div class="container">
+        <br />
+        @RenderBody()
+    </div>
     <!-- /.container -->
 
 
@@ -29,5 +29,7 @@
     <script src="../../Scripts/ie10-viewport-bug-workaround.js"></script>
     <script src="../../Scripts/jquery.validate.min.js"></script>
     <script src="../../Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    @RenderSection("PageScripts", false);
 </body>
 </html>
