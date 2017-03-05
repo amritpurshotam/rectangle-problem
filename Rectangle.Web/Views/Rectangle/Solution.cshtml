@@ -39,4 +39,11 @@
 @section PageScripts
 {
     <script src="../../Scripts/PageScripts/rectangle.js"></script>
+    
+    <script>
+        var inputGrid = @(Html.Raw(Json.Encode(Model.InputGrid)))
+        $(document).ready(function() {
+            draw("uploaded-rectangles", inputGrid);
+        });
+    </script>
 }
