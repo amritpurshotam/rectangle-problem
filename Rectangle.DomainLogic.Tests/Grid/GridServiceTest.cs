@@ -29,8 +29,6 @@ namespace Rectangle.DomainLogic.Tests.Grid
             const string rectanglesString = "Rectangle Dimensions\r\nHeight:\t1\r\nWidth:\t6\r\n\r\n\r\nRectangle Dimensions\r\nHeight:\t1\r\nWidth:\t2\r\n\r\n\r\nRectangle Dimensions\r\nHeight:\t4\r\nWidth:\t9\r\n\r\n\r\n";
             var grid = this.gridService.InitialiseGridFromString(rectanglesString);
 
-            Assert.AreEqual(3, grid.RectangleList.Count);
-
             Assert.AreEqual(1, grid.RectangleList[0].Height);
             Assert.AreEqual(6, grid.RectangleList[0].Width);
 
