@@ -65,14 +65,13 @@ namespace RectangleProblem.Controllers
 
             try
             {
+                string rectangleString;
                 using (var streamReader = new StreamReader(model.RectanglesFile.InputStream))
                 {
                     var rectanglesString = streamReader.ReadToEnd();
                     var grid = gridService.InitialiseGridFromString(rectanglesString);
-
                     return Json(grid, JsonRequestBehavior.AllowGet);
                 }
-                return View();
             }
             catch (LogicException ex)
             {
