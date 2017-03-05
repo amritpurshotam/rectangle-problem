@@ -26,7 +26,7 @@ namespace Rectangle.DomainLogic.Services.Implementations
                 var width = random.Next(Constants.MinRectangleLength, Constants.MaxRectangleLength);
 
                 var bottomLeftCoordinate = grid.GetNextBottomLeftCoordinate();
-                var rectangle = new Domain.Rectangle(bottomLeftCoordinate, height, width);
+                var rectangle = new Domain.Rectangle(i, bottomLeftCoordinate, height, width);
                 
                 grid.AddRectangle(rectangle);
             }
@@ -45,6 +45,7 @@ namespace Rectangle.DomainLogic.Services.Implementations
 
             var matches = heightWidthRegex.Matches(rectanglesString);
             AssertNumberOfRectanglesInRange(matches.Count);
+            var rectangleId = 1;
 
             foreach (Match match in matches)
             {
@@ -54,7 +55,8 @@ namespace Rectangle.DomainLogic.Services.Implementations
                 var height = int.Parse(digitRegex.Match(heightMatch.Value).Value);
                 var width = int.Parse(digitRegex.Match(widthMatch.Value).Value);
 
-                grid.AddRectangle(new Domain.Rectangle(grid.GetNextBottomLeftCoordinate(), height, width));
+                grid.AddRectangle(new Domain.Rectangle(rectangleId, grid.GetNextBottomLeftCoordinate(), height, width));
+                rectangleId++;
             }
 
             return grid;

@@ -70,7 +70,7 @@ namespace RectangleProblem.Controllers
                     var rectanglesString = streamReader.ReadToEnd();
                     var grid = gridService.InitialiseGridFromString(rectanglesString);
 
-                    var model = new SolutionRectanglesDisplay(grid, null);
+                    var model = new SolutionRectanglesDisplay(grid, grid.GetMinimumVerticallyStackedRectangles());
                     return View("Solution", model);
                 }
             }

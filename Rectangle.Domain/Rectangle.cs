@@ -4,13 +4,15 @@ namespace Rectangle.Domain
 {
     public class Rectangle
     {
-        public Rectangle(Coordinate bottomLeftCoordinate, int height, int width)
+        public Rectangle(int rectangleId, Coordinate bottomLeftCoordinate, int height, int width)
         {
+            this.RectangleId = rectangleId;
             this.BottomLeftCoordinate = bottomLeftCoordinate;
             this.Height = height;
             this.Width = width;
         }
 
+        public int RectangleId { get; private set; }
         public int Height { get; private set; }
         public int Width { get; private set; }
 

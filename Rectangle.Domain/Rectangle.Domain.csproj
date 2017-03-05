@@ -57,6 +57,7 @@
     <Compile Include="Grid.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangle.cs" />
+    <Compile Include="CoordinateRange.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Rectangle.Common\Rectangle.Common.csproj">

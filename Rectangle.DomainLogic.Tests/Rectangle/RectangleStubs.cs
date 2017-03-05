@@ -8,7 +8,7 @@ namespace Rectangle.DomainLogic.Tests.Rectangle
         {
             get
             {
-                return new Domain.Rectangle(CoordinateStubs.CoordinateStub, 3, 5);
+                return new Domain.Rectangle(1, CoordinateStubs.CoordinateStub, 3, 5);
             }
         }
     }
