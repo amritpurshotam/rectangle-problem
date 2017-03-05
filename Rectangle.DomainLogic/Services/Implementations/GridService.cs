@@ -15,15 +15,7 @@ namespace Rectangle.DomainLogic.Services.Implementations
 
         public Grid InitialiseWithRectanglesOfRandomSize(byte numberOfRectangles)
         {
-            if (numberOfRectangles < Constants.MinRectangles)
-            {
-                throw new OutOfRangeError(string.Format("A minimum of {0} rectangles are required.", Constants.MinRectangles)).AsException();
-            }
-
-            if (numberOfRectangles > Constants.MaxRectangles)
-            {
-                throw new OutOfRangeError(string.Format("A maximum of {0} rectangles are required.", Constants.MaxRectangles)).AsException();
-            }
+            AssertNumberOfRectanglesInRange(numberOfRectangles);
 
             var random = new Random();
 
@@ -52,6 +44,8 @@ namespace Rectangle.DomainLogic.Services.Implementations
             var digitRegex = new Regex(@"\d+", RegexOptions.Compiled);
 
             var matches = heightWidthRegex.Matches(rectanglesString);
+            AssertNumberOfRectanglesInRange(matches.Count);
+
             foreach (Match match in matches)
             {
                 var heightMatch = heightRegex.Match(match.Value);
@@ -64,6 +58,19 @@ namespace Rectangle.DomainLogic.Services.Implementations
             }
 
             return grid;
+        }
+
+        private static void AssertNumberOfRectanglesInRange(int numberOfRectangles)
+        {
+            if (numberOfRectangles < Constants.MinRectangles)
+            {
+                throw new OutOfRangeError(string.Format("A minimum of {0} rectangles are required.", Constants.MinRectangles)).AsException();
+            }
+
+            if (numberOfRectangles > Constants.MaxRectangles)
+            {
+                throw new OutOfRangeError(string.Format("A maximum of {0} rectangles are required.", Constants.MaxRectangles)).AsException();
+            }
         }
     }
 }
