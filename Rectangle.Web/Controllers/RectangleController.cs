@@ -65,7 +65,6 @@ namespace RectangleProblem.Controllers
 
             try
             {
-                string rectangleString;
                 using (var streamReader = new StreamReader(model.RectanglesFile.InputStream))
                 {
                     var rectanglesString = streamReader.ReadToEnd();
