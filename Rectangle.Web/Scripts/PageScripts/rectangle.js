@@ -1,5 +1,8 @@
 ﻿function draw(canvasId, grid, isSolutionGrid) {
     var canvas = document.getElementById(canvasId);
+
+    canvas.style.width = "100%";
+    canvas.width = canvas.offsetWidth;
     if (canvas.getContext) {
         var context = canvas.getContext("2d");
         context.translate(0, 200);
@@ -13,9 +16,8 @@
             }
         }
         
-
-        if (sumWidth > 750) {
-            var scalingFactor = 1 / (sumWidth / 750);
+        if (sumWidth > canvas.width) {
+            var scalingFactor = 1 / (sumWidth / canvas.width);
             context.scale(scalingFactor, 1);
         }
 
