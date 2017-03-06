@@ -17,6 +17,7 @@
                     @Html.LabelFor(model => model.NumberOfRectangles, new { @class = "control-label col-md-2" })
                     <div class="col-md-3">
                         @Html.EditorFor(model => model.NumberOfRectangles, new { @class = "form-control" })
+                        <br/>
                         @Html.ValidationMessageFor(model => model.NumberOfRectangles)
                     </div>
                 </div>
