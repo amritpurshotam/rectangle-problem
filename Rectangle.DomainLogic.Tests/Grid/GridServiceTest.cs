@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿using System.Text;
+using NUnit.Framework;
+using Rectangle.Common;
+using Rectangle.Domain.Exceptions;
 using Rectangle.DomainLogic.Services.Implementations;
 using Rectangle.DomainLogic.Services.Interfaces;
 
@@ -46,6 +49,38 @@ namespace Rectangle.DomainLogic.Tests.Grid
             var grid = this.gridService.InitialiseGridFromString(rectanglesString);
 
             Assert.AreEqual(3, grid.RectangleList.Count);
+        }
+
+        [Test]
+        public void GivenAnInvalidRectangleString_When_InitialisingGrid_ThenThrowLogicError()
+        {
+            const string rectanglesString = "abc123";
+
+            Assert.Throws(Is.TypeOf<LogicException>().And.Message.Contains(string.Format("A minimum of {0} rectangles are required.", Constants.MinRectangles)),
+                () => this.gridService.InitialiseGridFromString(rectanglesString));
+        }
+
+        [Test]
+        public void GivenARectangleStringWithFewerThanTheMinimumRectangles_When_InitialisingGrid_ThenThrowLogicError()
+        {
+            const string rectanglesString = "Rectangle Dimensions\r\nHeight:\t1\r\nWidth:\t6\r\n\r\n\r\nRectangle Dimensions\r\nHeight:\t1\r\nWidth:\t2\r\n\r\n\r\n";
+
+            Assert.Throws(Is.TypeOf<LogicException>().And.Message.Contains(string.Format("A minimum of {0} rectangles are required.", Constants.MinRectangles)),
+                () => this.gridService.InitialiseGridFromString(rectanglesString));
+        }
+
+        [Test]
+        public void GivenARectangleStringWithMoreThanTheMaximumRectangles_When_InitialisingGrid_ThenThrowLogicError()
+        {
+            var sb = new StringBuilder();
+            for (int i = 0; i < Constants.MaxRectangleHeight + 5; i++)
+            {
+                sb.Append("Rectangle Dimensions\r\nHeight:\t1\r\nWidth:\t6\r\n\r\n\r\n");
+            }
+            var rectanglesString = sb.ToString();
+
+            Assert.Throws(Is.TypeOf<LogicException>().And.Message.Contains(string.Format("A maximum of {0} rectangles are required.", Constants.MaxRectangles)),
+                () => this.gridService.InitialiseGridFromString(rectanglesString));
         }
     }
 }

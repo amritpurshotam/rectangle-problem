@@ -64,6 +64,10 @@
     <Compile Include="Rectangle\RectangleTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Rectangle.Common\Rectangle.Common.csproj">
+      <Project>{ccea9ab0-c3ae-44a9-a9a2-81c8bea0900d}</Project>
+      <Name>Rectangle.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rectangle.DomainLogic\Rectangle.DomainLogic.csproj">
       <Project>{56ab1f77-9a1d-4371-b073-2b33d510ee72}</Project>
       <Name>Rectangle.DomainLogic</Name>
