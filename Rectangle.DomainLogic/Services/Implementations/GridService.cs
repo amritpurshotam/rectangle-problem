@@ -22,8 +22,8 @@ namespace Rectangle.DomainLogic.Services.Implementations
             var grid = new Grid();
             for (var i = 0; i < numberOfRectangles; i++)
             {
-                var height = random.Next(Constants.MinRectangleLength, Constants.MaxRectangleLength);
-                var width = random.Next(Constants.MinRectangleLength, Constants.MaxRectangleLength);
+                var height = random.Next(Constants.MinRectangleHeight, Constants.MaxRectangleHeight);
+                var width = random.Next(Constants.MinRectangleWidth, Constants.MaxRectangleWidth);
 
                 var bottomLeftCoordinate = grid.GetNextBottomLeftCoordinate();
                 var rectangle = new Domain.Rectangle(i, bottomLeftCoordinate, height, width);

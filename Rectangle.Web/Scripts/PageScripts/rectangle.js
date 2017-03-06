@@ -3,6 +3,7 @@
 
     canvas.style.width = "100%";
     canvas.width = canvas.offsetWidth;
+
     if (canvas.getContext) {
         var context = canvas.getContext("2d");
         context.translate(0, 200);

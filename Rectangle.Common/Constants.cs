@@ -2,9 +2,11 @@
 {
     public static class Constants
     {
-        public const byte MinRectangles = 3;
-        public const byte MaxRectangles = 30;
-        public const byte MinRectangleLength = 1;
-        public const byte MaxRectangleLength = 100;
+        public const int MinRectangles = 3;
+        public const int MaxRectangles = 30;
+        public const int MinRectangleWidth = 1;
+        public const int MaxRectangleWidth = 100;
+        public const int MinRectangleHeight = 1;
+        public const int MaxRectangleHeight = 200;
     }
 }
