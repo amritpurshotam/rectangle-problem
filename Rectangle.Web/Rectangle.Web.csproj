@@ -158,7 +158,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Rectangle\CoordinateInput.cs" />
     <Compile Include="Models\Rectangle\GenerateRectangleInput.cs" />
+    <Compile Include="Models\Rectangle\GridInput.cs" />
+    <Compile Include="Models\Rectangle\RectangleInput.cs" />
     <Compile Include="Models\Rectangle\SolutionRectanglesDisplay.cs" />
     <Compile Include="Models\Rectangle\UploadInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

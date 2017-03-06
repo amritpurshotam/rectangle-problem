@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<br/>
+<br />
 
 <div class="panel panel-default">
     <div class="panel-heading">Uploaded Rectangles</div>
@@ -29,10 +29,22 @@
 
 <div class="row">
     <div class="col-md-12">
-        <a class="btn btn-primary pull-right" href="">
-            Download
-            <i class="glyphicon glyphicon-cloud-download"></i>
-        </a>
+        @using (Html.BeginForm(RectangleController.DownloadSolutionActionName, RectangleController.RectangleControllerName, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            for (int i = 0; i < Model.SolutionGrid.RectangleList.Count; i++)
+            {
+                @Html.Hidden(string.Format("RectangleInputList[{0}].RectangleId", i), Model.SolutionGrid.RectangleList[i].RectangleId)
+                @Html.Hidden(string.Format("RectangleInputList[{0}].Width", i), Model.SolutionGrid.RectangleList[i].Width)
+                @Html.Hidden(string.Format("RectangleInputList[{0}].Height", i), Model.SolutionGrid.RectangleList[i].Height)
+                @Html.Hidden(string.Format("RectangleInputList[{0}].X", i), Model.SolutionGrid.RectangleList[i].BottomLeftCoordinate.X)
+                @Html.Hidden(string.Format("RectangleInputList[{0}].Y", i), Model.SolutionGrid.RectangleList[i].BottomLeftCoordinate.Y)
+            }
+            <button type="submit" class="btn btn-primary pull-right">
+                Download
+                <i class="glyphicon glyphicon-cloud-download"></i>
+            </button>
+        }
     </div>
 </div>
 

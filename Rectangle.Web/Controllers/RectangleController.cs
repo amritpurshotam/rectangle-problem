@@ -56,6 +56,7 @@ namespace RectangleProblem.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Upload(UploadInput input)
         {
             if (!ModelState.IsValid)
@@ -79,6 +80,15 @@ namespace RectangleProblem.Controllers
                 ModelState.AddLogicErrors(ex);
                 return View(input);
             }
+        }
+
+        public const string DownloadSolutionActionName = "DownloadSolution";
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DownloadSolution(GridInput model)
+        {
+            var grid = model.ToDomain();
+            return File(Encoding.UTF8.GetBytes(grid.ToStringUsingCoordinatesOfRectangles()), "text/plain", "solution-rectangle-coordinates.txt");
         }
     }
 }
