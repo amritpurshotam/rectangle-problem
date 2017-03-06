@@ -58,5 +58,38 @@ namespace Rectangle.DomainLogic.Tests.Grid
 
             Assert.AreEqual("Rectangle Coordinates\r\nBottomLeft:\t(0,0)\r\nTopLeft:\t(0,4)\r\nTopRight:\t(2,4)\r\nBottomRight:\t(2,0)\r\n\r\n\r\nRectangle Coordinates\r\nBottomLeft:\t(2,0)\r\nTopLeft:\t(2,2)\r\nTopRight:\t(3,2)\r\nBottomRight:\t(3,0)\r\n\r\n\r\n", gridString);
         }
+
+        [Test]
+        public void Give_AGrid_WhenCalculatingMinimumVerticallyStackedRectangles_ThenNumberOfRectanglesIsCorrect()
+        {
+            var grid = GridStubs.GridStub2;
+
+            var solutionGrid = grid.GetMinimumVerticallyStackedRectangles();
+
+            Assert.AreEqual(3, solutionGrid.RectangleList.Count);
+        }
+
+        [Test]
+        public void Give_AGrid_WhenCalculatingMinimumVerticallyStackedRectangles_RectangleDimensionsAreCorrect()
+        {
+            var grid = GridStubs.GridStub2;
+
+            var solutionGrid = grid.GetMinimumVerticallyStackedRectangles();
+
+            Assert.AreEqual(0, solutionGrid.RectangleList[0].BottomLeftCoordinate.X);
+            Assert.AreEqual(0, solutionGrid.RectangleList[0].BottomLeftCoordinate.Y);
+            Assert.AreEqual(2, solutionGrid.RectangleList[0].Height);
+            Assert.AreEqual(7, solutionGrid.RectangleList[0].Width);
+
+            Assert.AreEqual(0, solutionGrid.RectangleList[1].BottomLeftCoordinate.X);
+            Assert.AreEqual(2, solutionGrid.RectangleList[1].BottomLeftCoordinate.Y);
+            Assert.AreEqual(2, solutionGrid.RectangleList[1].Height);
+            Assert.AreEqual(2, solutionGrid.RectangleList[1].Width);
+
+            Assert.AreEqual(3, solutionGrid.RectangleList[2].BottomLeftCoordinate.X);
+            Assert.AreEqual(2, solutionGrid.RectangleList[2].BottomLeftCoordinate.Y);
+            Assert.AreEqual(1, solutionGrid.RectangleList[2].Height);
+            Assert.AreEqual(4, solutionGrid.RectangleList[2].Width);
+        }
     }
 }
