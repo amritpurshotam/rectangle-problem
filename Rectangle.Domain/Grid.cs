@@ -56,9 +56,11 @@ namespace Rectangle.Domain
         {
             var grid = new Grid();
             var coordinateRangeQueue = new Queue<CoordinateRange>();
-            coordinateRangeQueue.Enqueue(new CoordinateRange(0, 0, this.RectangleList.Last().BottomRightCoordinate.X));
-            var rectangleId = 1;
 
+            var initialCoordinateRange = new CoordinateRange(0, 0, this.RectangleList.Last().BottomRightCoordinate.X);
+            coordinateRangeQueue.Enqueue(initialCoordinateRange);
+            
+            var rectangleId = 1;
             while (coordinateRangeQueue.Any())
             {
                 var coordinateRange = coordinateRangeQueue.Dequeue();
@@ -68,39 +70,54 @@ namespace Rectangle.Domain
                 {
                     var shortestRectangles = this.GetRectanglesWithExactHeightInCoordinateRange(nextHeight.Value, coordinateRange);
 
-                    coordinateRangeQueue.Enqueue(new CoordinateRange(nextHeight.Value, coordinateRange.MinX, shortestRectangles[0].TopLeftCoordinate.X));
+                    var coordinateRangeToLeftOfFirstRectangle = new CoordinateRange(nextHeight.Value,
+                        coordinateRange.MinX, shortestRectangles[0].TopLeftCoordinate.X);
+                    coordinateRangeQueue.Enqueue(coordinateRangeToLeftOfFirstRectangle);
                     
                     for (int i = 0; i < shortestRectangles.Length; i++)
                     {
                         if (i < shortestRectangles.Length - 1)
                         {
-                            coordinateRangeQueue.Enqueue(new CoordinateRange(nextHeight.Value,
+                            var coordinateRangeBetweenRectangles = new CoordinateRange(nextHeight.Value,
                                 shortestRectangles[i].TopRightCoordinate.X,
-                                shortestRectangles[i + 1].TopLeftCoordinate.X));
+                                shortestRectangles[i + 1].TopLeftCoordinate.X);
+                            coordinateRangeQueue.Enqueue(coordinateRangeBetweenRectangles);
                         }
                         else
                         {
-                            if (shortestRectangles[i].RectangleId < this.RectangleList.Count)
+                            if (!IsFarRightRectangle(shortestRectangles[i]))
                             {
-
-                                if (shortestRectangles[i].Height < this.RectangleList.Single(x => x.RectangleId == (shortestRectangles[i].RectangleId + 1)).Height)
+                                if (IsRectangleShorterThanTheRectangleToTheRight(shortestRectangles[i]))
                                 {
-                                    coordinateRangeQueue.Enqueue(new CoordinateRange(nextHeight.Value,
+                                    var coordinateRangeToRightOfLastRectangle = new CoordinateRange(nextHeight.Value,
                                         shortestRectangles[i].TopRightCoordinate.X,
-                                        this.GetFarRightWidthInRange(coordinateRange)));
+                                        this.GetFarRightWidthInRange(coordinateRange));
+                                    coordinateRangeQueue.Enqueue(coordinateRangeToRightOfLastRectangle);
                                 }
                             }
-                            
                         }
                     }
 
-                    var rectangle = new Rectangle(rectangleId, new Coordinate(coordinateRange.MinX, coordinateRange.MinY), nextHeight.Value - coordinateRange.MinY, coordinateRange.MaxX - coordinateRange.MinX);
+                    var bottomLeftCoordinate = new Coordinate(coordinateRange.MinX, coordinateRange.MinY);
+                    var height = nextHeight.Value - coordinateRange.MinY;
+                    var width = coordinateRange.MaxX - coordinateRange.MinX;
+                    var rectangle = new Rectangle(rectangleId, bottomLeftCoordinate, height, width);
                     rectangleId++;
                     grid.AddRectangle(rectangle);
                 }
             }
 
             return grid;
+        }
+
+        private bool IsRectangleShorterThanTheRectangleToTheRight(Rectangle rectangle)
+        {
+            return rectangle.Height < this.RectangleList.Single(x => x.RectangleId == (rectangle.RectangleId + 1)).Height;
+        }
+
+        private bool IsFarRightRectangle(Rectangle rectangle)
+        {
+            return rectangle.RectangleId == this.RectangleList.Count;
         }
 
         private int? GetShortestHeightInCoordinateRange(CoordinateRange coordinateRange)
