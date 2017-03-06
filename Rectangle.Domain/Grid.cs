@@ -28,16 +28,6 @@ namespace Rectangle.Domain
             return this.RectangleList.Last().BottomRightCoordinate;
         }
 
-        public Coordinate GetNextBottomLeftCoordinateForStackedRectangles()
-        {
-            if (!this.RectangleList.Any())
-            {
-                return new Coordinate(0, 0);
-            }
-
-            return this.RectangleList.First().TopLeftCoordinate;
-        }
-
         public string ToStringUsingDimensionsOfRectangles()
         {
             var builder = new StringBuilder();
